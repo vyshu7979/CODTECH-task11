@@ -24,3 +24,10 @@ Usage
 To use the tool, simply create an instance of PasswordStrengthChecker with a password string, and call assess_strength() to get a report on the password's strength.
 
 This implementation can be extended with additional checks, such as common password dictionary attacks or more sophisticated entropy calculations for a more advanced password assessment.
+Technologies used:
+1. Python Programming Language
+Core Technology: The entire tool is written in Python, a versatile and popular programming language. Python is chosen for its simplicity and readability, making it an excellent choice for implementing security tools.
+2. Regular Expressions (Regex)
+Module: re
+Purpose: Regex is used to search for specific patterns in the password, such as the presence of lowercase letters, uppercase letters, digits, and special characters. This helps determine the complexity of the password.
+Example: re.search(r'[a-z]', self.password) checks for lowercase letters.
