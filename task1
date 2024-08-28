@@ -1,0 +1,83 @@
+import re
+
+class PasswordStrengthChecker:
+    def __init__(self, password):
+        self.password = password
+
+    def check_length(self):
+        """Check the length of the password."""
+        length = len(self.password)
+        if length >= 12:
+            return 3
+        elif length >= 8:
+            return 2
+        elif length >= 4:
+            return 1
+        else:
+            return 0
+
+    def check_complexity(self):
+        """Check the complexity of the password."""
+        complexity_score = 0
+
+        # Check for lowercase letters
+        if re.search(r'[a-z]', self.password):
+            complexity_score += 1
+
+        # Check for uppercase letters
+        if re.search(r'[A-Z]', self.password):
+            complexity_score += 1
+
+        # Check for digits
+        if re.search(r'\d', self.password):
+            complexity_score += 1
+
+        # Check for special characters
+        if re.search(r'[@$!%*?&#]', self.password):
+            complexity_score += 1
+
+        return complexity_score
+
+    def check_uniqueness(self):
+        """Check the uniqueness of the password."""
+        # Simple entropy estimation based on unique characters
+        unique_chars = len(set(self.password))
+        if unique_chars > 8:
+            return 3
+        elif unique_chars > 5:
+            return 2
+        elif unique_chars > 3:
+            return 1
+        else:
+            return 0
+
+    def assess_strength(self):
+        """Assess the overall strength of the password."""
+        length_score = self.check_length()
+        complexity_score = self.check_complexity()
+        uniqueness_score = self.check_uniqueness()
+
+        total_score = length_score + complexity_score + uniqueness_score
+
+        if total_score >= 7:
+            strength = "Strong"
+        elif total_score >= 5:
+            strength = "Moderate"
+        else:
+            strength = "Weak"
+
+        return {
+            "Length Score": length_score,
+            "Complexity Score": complexity_score,
+            "Uniqueness Score": uniqueness_score,
+            "Total Score": total_score,
+            "Password Strength": strength
+        }
+
+# Example Usage
+password = "MyP@ssw0rd2024!"
+checker = PasswordStrengthChecker(password)
+strength_report = checker.assess_strength()
+
+for key, value in strength_report.items():
+    print(f"{key}: {value}")
