@@ -3,7 +3,8 @@ Name:CHENU VAISHNAVI
 company:CODETECH IT SOLUTIONS
 domain:cybersecurity and ethical hacking
 duration:august to september 2024
-mentor:CT08DS5959
+ID:CT08DS5959
+mentor:Muzammil Ahmed
 Overview of the project
 project:PASSWORD STRENGTH CHECKER
 Explanation
